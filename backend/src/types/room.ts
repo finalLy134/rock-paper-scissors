@@ -1,5 +1,7 @@
 export type Room = {
     code: string,
     hostId: any,
-    players: [],
+    joinerId: any,
+    choices: Record<string, string>,
+    status: 'waiting' | 'started' | 'finished'
 }

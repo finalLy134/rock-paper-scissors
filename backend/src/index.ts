@@ -19,6 +19,7 @@ export const rooms: Record<string, Room> = {};
 
 app.use(cors({
   origin: FRONTEND_BASE_URL,
+  allowedHeaders: ['Content-Type', 'X-Player-Id'],
   credentials: true
 }));
 
