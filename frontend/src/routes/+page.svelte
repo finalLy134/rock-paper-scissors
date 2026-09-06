@@ -1,3 +1,17 @@
+<script lang="ts">
+  import { onMount } from "svelte";
+
+  onMount(async () => {
+    const response = await fetch("http://localhost:8000/auth", {
+      credentials: 'include',
+      headers: { "Content-Type": "application/json" }
+    });
+
+    const result = await response.json();
+    console.log(result);
+  });
+</script>
+
 <main>
   <div class="top">
     <h1>Rock Paper Scissors</h1>

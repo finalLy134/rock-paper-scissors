@@ -7,7 +7,7 @@
   let roomState = $state('started'); // 'started', 'ended', 'waiting'
 
   onMount(async () => {
-    const response = await fetch("http://localhost:8000/enter", {
+    const response = await fetch("http://localhost:8000/room/enter", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ code: data.code }),
