@@ -3,7 +3,8 @@
   import { goto } from '$app/navigation';
 
   let { data } = $props();
-  let roomStatus = $state("Connecting...");
+
+  let roomState = $state('started'); // 'started', 'ended', 'waiting'
 
   onMount(async () => {
     const response = await fetch("http://localhost:8000/enter", {
@@ -18,8 +19,6 @@
     if (!data.code && result.code) {
       goto(`/room/${result.code}`, { replaceState: true });
     }
-
-    roomStatus = `Waiting for another player to join...`;
   });
 
   let link = $derived(`http://localhost:5173/room/${data.code}`);
@@ -34,7 +33,7 @@
 <main>
   <div class="top">
     <h1>Private Room</h1>
-    <p>{roomStatus}</p>
+    <p>Waiting for another player to join...</p>
     <div class="link-container">
       <button class="copy-link-btn" onclick={copyLink}>Copy Link</button>
       <p class="link">{link}</p>
